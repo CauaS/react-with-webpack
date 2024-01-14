@@ -4,11 +4,8 @@ const path = require('path');
 
 module.exports = {
     mode: 'development', // mode of development
-    entry: './app.js', // entry file
-    output: {
-        path: path.resolve(__dirname, 'dist'), //path to output the build file
-        filename: 'bundle.js' //name of build file
-    },
+    devtool: 'inline-source-map',
+    entry: './src/app.tsx', // entry file
     module: {
         rules: [
            { 
@@ -17,8 +14,20 @@ module.exports = {
               use: {
                 loader: 'babel-loader', // use this loader
               }
+            },
+            {
+              test: /\.tsx?$/,
+              use: 'ts-loader',
+              exclude: /node_modules/
             }
         ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js']
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'), //path to output the build file
+        filename: 'bundle.js' //name of build file
     },
     plugins:[
       new HtmlWebpackPlugin({
