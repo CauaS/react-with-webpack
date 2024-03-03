@@ -8,7 +8,8 @@
     "wp-build": "yarn webpack",
     "start": "webpack-dev-server",
     "develop": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "bundle-report": "webpack-bundle-analyzer --port 4200 dist/stats.json"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   }

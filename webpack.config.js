@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
@@ -32,6 +33,13 @@ module.exports = {
     plugins:[
       new HtmlWebpackPlugin({
         template: "public/index.html" // create a template
+      }),
+      new BundleAnalyzerPlugin({
+        analyserMode: 'disabled',
+        generateStatsFile: true,
+        statsOption: {
+          source: false
+        }
       })
     ],
     devServer: {
@@ -39,5 +47,6 @@ module.exports = {
       historyApiFallback: true,
       port: 3000, //given port to exec. app
       open: true,  // open new tab
-    }
+    },
+   
 }
