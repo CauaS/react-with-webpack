@@ -34,6 +34,9 @@ module.exports = {
         template: "public/index.html" // create a template
       })
     ],
+    performance: {
+      hints: false
+    },
     devServer: {
       host: 'localhost', // where to run
       historyApiFallback: true,
