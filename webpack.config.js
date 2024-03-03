@@ -38,7 +38,7 @@ module.exports = {
         analyserMode: 'disabled',
         generateStatsFile: true,
         statsOption: {
-          source: false
+          source: true
         }
       })
     ],
@@ -48,5 +48,7 @@ module.exports = {
       port: 3000, //given port to exec. app
       open: true,  // open new tab
     },
-   
+    optimization: {
+      usedExports: false
+    }
 }
