@@ -1,6 +1,8 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
+const BrotliPlugin = require("brotli-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'development', // mode of development
@@ -32,8 +34,31 @@ module.exports = {
     plugins:[
       new HtmlWebpackPlugin({
         template: "public/index.html" // create a template
+      }),
+      new BrotliPlugin({
+        asset: '[path].br[query]',
+        test: /\.(js|css|html|svg|ts|tsx)$/,
+        threshold: 1024,  // Define the minumum size of the file (em bytes) to apply compression Brotli
+        minRatio: 0.8, // Define relation of minumum compression to save compressed file
+        compressionOptions: {
+          level: 11
+        },
+        deleteOriginalAssets: false
       })
     ],
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          parallel: true,
+          terserOptions: {
+            format:{
+              comments: false // Prevents building with comments
+            }
+          },
+          extractComments: false // Whether comments shall be extracted to a separate file
+        }),
+      ]
+    },
     devServer: {
       host: 'localhost', // where to run
       historyApiFallback: true,

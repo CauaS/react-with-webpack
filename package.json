@@ -15,8 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-dom": "^18.2.18",
+    "brotli-webpack-plugin": "^1.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "terser-webpack-plugin": "^5.3.10"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
